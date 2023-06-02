@@ -1,3 +1,5 @@
+--Here is a curated set of Pokemon data. 
+--Used advanced SQL SELECT queries to discover things about the data.
 
 CREATE TABLE pokemon(
   Number     INTEGER,
@@ -815,14 +817,18 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (720,'HoopaHoopa Unbound','Psychic','Dark',680,80,160,60,170,130,80,6,'True');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (721,'Volcanion','Fire','Water',600,80,110,120,130,90,70,6,'True');
 
+
+--I used SQL to aggregate data to find the average Total score, the max Attack score, and Min Defense score out of all the Pokemons
 SELECT avg(Total) FROM pokemon;
 SELECT max(Attack) FROM pokemon;
 SELECT min(Defense)FROM pokemon;
 
+--I used SQL to aggregate data using HAVING to group pokemons that have a Total score that is greater then 450, a Attack score greater the 120, and a Defense score less than 50. 
 SELECT name, avg(Total) AS average_Total FROM pokemon GROUP BY name HAVING average_Total > 450;
 SELECT name, max(Attack) AS max_Attack FROM pokemon GROUP BY name HAVING max_Attack > 120;
 SELECT name, min(Defense) AS min_Defense FROM pokemon GROUP BY name HAVING min_Defense < 50;
 
+--I used SQL to group the data values that did not exist yet using CASE. I seperated the speed score of the pokemon into four different categories. 
 SELECT COUNT (*),
 CASE
 WHEN Speed > 120 THEN “High_Speed”
@@ -833,6 +839,7 @@ END AS “Speed_Type”
 FROM pokemon
 GROUP BY Speed_Type;
 
-
+--What interesting ways are there to filter the data (using AND/OR)?
+--I used SQL to filter the data using AND and OR. I first filter out pokemons that are Legendarys or 3rd generations. I then filter out pokemons that are lengendary and have attack scorrs greater than 100 and speed score greater than 100. 
 SELECT *FROM pokemon WHERE Legendary = "True" OR Generation > 5;
 SELECT * FROM pokemon WHERE Legendary = "True" AND Attack > 100 AND Speed > 100;
