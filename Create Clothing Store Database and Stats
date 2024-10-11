@@ -19,19 +19,28 @@ INSERT INTO store VALUES
 (14, "socks", 4, "large", 12),
 (15, "hoodie", 32, "small", 9);
 
---display the database ordered by price. 
-SELECT * FROM store ORDER BY price desc;
+--Display the database ordered by price. 
+SELECT * 
+FROM store
+ORDER BY price DESC;
 
---what are the items that have a price greater then 25 ordered by descreasing price? 
-SELECT * FROM store WHERE price > 25 ORDER BY price DESC;
+--What are the items that have a price greater then 25 ordered by descreasing price? 
+SELECT * 
+FROM store
+WHERE price > 25 
+ORDER BY price DESC;
 
---what is the sum price of items in the entire store? 
-SELECT SUM(price) FROM store;
+--What is the sum price of items in the entire store? 
+SELECT SUM(price) 
+FROM store;
 
---what are the 5 items with the most quantity? 
-SELECT item, price, quantity FROM store order by quantity desc limit 5; 
+--What are the 5 items with the most quantity? 
+SELECT item, price, quantity 
+FROM store 
+ORDER BY quantity DESC 
+LIMIT 5; 
 
---what is the avg price of items with small size? 
+--What is the avg price of items with small size? 
 SELECT AVG(price) "avg small item price"
 FROM store
-where size='small'; 
+WHERE size="small"; 
